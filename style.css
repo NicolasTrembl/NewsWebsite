@@ -1,0 +1,142 @@
+*{
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bodoni Moda", serif;
+    color: rgb(238, 238, 238);
+}
+
+.container { 
+    height: 100vh;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    justify-items: stretch;
+    grid-template-areas:
+        "Top-left Top-left Top-Right Top-Right"
+        "Left Center Center Right"
+        "Left Bottom Bottom Bottom";
+    filter: contrast(50%) brightness(80%);
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(34, 40, 49, 0.9), rgba(34, 40, 49, 0.6)),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+.Top-left { grid-area: Top-left; }
+
+.Top-Right { 
+    grid-area: Top-Right; overflow: hidden; 
+}
+
+.Center { grid-area: Center; }
+
+.Center:hover h1, .Center:hover h2{
+    transform: scale(1.3);
+    transition: all 0.5s ease; 
+}
+
+.Center:not(:hover) h1, .Center:not(:hover) h2{
+    transform: scale(1);
+    transition: all 0.5s ease; 
+}
+
+
+.Bottom { 
+    grid-area: Bottom;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+}
+
+.Bottom > div {
+    width: 20vw;
+    height: 20vh;
+}
+
+.Left { 
+    grid-area: Left; 
+    background-image: url("assets/einstein.jpg");
+    background-size: cover;
+    background-position: center;
+    justify-content: end !important;
+    padding-bottom: 20px;
+}
+
+.Right { 
+    grid-area: Right; 
+    background-image: url("assets/micro.jpg");
+    background-size: cover;
+    background-position: center;   
+    justify-content: end !important;
+    align-items: end !important;
+    padding-bottom: 5px;
+    padding-right: 15px;
+}
+
+.Right:hover h3{
+    transform: scale(1.2) translate(-10px, -10px);
+    transition: all 0.5s ease; 
+}
+
+.Right:not(:hover) h3{
+    transform: scale(1) translate(0px, 0px);
+    transition: all 0.5s ease; 
+}
+
+.Right:hover {
+    background-color: rgb(34, 40, 49, .5) !important;
+    background-blend-mode: overlay;
+}
+
+.Left:hover h3{
+    transform: scale(2);
+    transition: all 0.5s ease; 
+}
+
+.Left:not(:hover) h3{
+    transform: scale(1);
+    transition: all 0.5s ease; 
+}
+
+.Left:hover {
+    background-color: rgb(34, 40, 49, .5) !important;
+    background-blend-mode: overlay;
+}
+  
+.grid_item {
+    border-radius: 25px;
+    background-color: rgb(49, 54, 63);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px inset rgb(238, 238, 238);
+    box-shadow: inset 0 0 10px 5px rgba(238, 238, 238, .4);
+}
+
+.grid_item:hover {
+    background-color: rgba(118, 171, 174, 0.1);
+    box-shadow: 0 0 10px 5px rgba(238, 238, 238, .4);
+}
+
+.grid_item > * {
+    background-color: transparent;
+}
+.grid_item > * > *{
+    background-color: transparent;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: xx-large;
+    text-shadow: 1px 1px 2px rgba(238, 238, 238, 0.4), 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+h3 {
+    font-weight: 900;
+    font-size: large;
+    text-shadow: 1px 1px 2px rgba(238, 238, 238, 0.2), 0 0 15px rgba(0, 0, 0, 0.8);
+}
