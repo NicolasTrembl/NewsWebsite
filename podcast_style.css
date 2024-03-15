@@ -1,0 +1,34 @@
+*{
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bodoni Moda", serif;
+    color: rgb(238, 238, 238);
+
+    background-image: url("assets/micro.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: url("assets/cursor.png"), auto;
+}
+
+.container { 
+    height: 100vh;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    justify-items: stretch;
+    grid-template-areas:
+        "Top-left Top-left Top-Right Top-Right"
+        "Left Center Center Right"
+        "Left Bottom Bottom Bottom";
+    filter: contrast(50%) brightness(80%);;
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(34, 40, 49, 0.9), rgba(34, 40, 49, 0.6)),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}

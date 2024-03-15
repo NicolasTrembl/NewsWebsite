@@ -1,7 +1,20 @@
+document.getElementsByClassName('Right')[0].addEventListener('click', function() {
+    var loc = window.location.href;
+    window.location.href = loc.substring(0, loc.lastIndexOf('/') + 1) + 'podcast.html';
+});
+
+var pause = false;
+
+document.getElementsByClassName('Center')[0].addEventListener('click', function() {
+  pause = !pause;
+});
+
+
+// v Not my code v
+
 
 var height = document.getElementById('canvas_container').clientHeight;
 var width = document.getElementById('canvas_container').clientWidth;
-
 
 
 let flock;
@@ -24,8 +37,10 @@ function setup() {
 }
 
 function draw() {
-  background(34, 40, 49);
-  flock.run();
+  if (!pause) {
+    background(34, 40, 49);
+    flock.run();
+  }
 }
 
 // Add a new boid into the System
@@ -66,7 +81,8 @@ function Boid(x, y) {
   this.acceleration = createVector(0, 0);
   this.velocity = createVector(random(-1, 1), random(-1, 1));
   this.position = createVector(x, y);
-  this.r = 3.0;
+  this.color = color(random(255), random(255), random(255)); // histoire de rendre les boids plus jolis
+  this.r = 5;
   this.maxspeed = 3;    // Maximum speed
   this.maxforce = 0.05; // Maximum steering force
 }
@@ -75,7 +91,7 @@ Boid.prototype.run = function(boids) {
   this.flock(boids);
   this.update();
   this.borders();
-  this.render();
+  this.render(this.color);
 }
 
 Boid.prototype.applyForce = function(force) {
@@ -122,10 +138,10 @@ Boid.prototype.seek = function(target) {
   return steer;
 }
 
-Boid.prototype.render = function() {
+Boid.prototype.render = function(color) {
   // Draw a triangle rotated in the direction of velocity
   let theta = this.velocity.heading() + radians(90);
-  fill(127);
+  fill(color);
   stroke(200);
   push();
   translate(this.position.x, this.position.y);
@@ -226,5 +242,3 @@ Boid.prototype.cohesion = function(boids) {
     return createVector(0, 0);
   }
 }
-
-
